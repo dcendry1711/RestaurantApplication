@@ -63,7 +63,7 @@ header {
 .client-order {
     margin: 10px auto;
     width: 508px;
-    height: 319px;
+    height: 400px;
 }
 
 #order-header{
@@ -73,7 +73,14 @@ header {
 }
 
 .total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-top: 1px solid black;
+}
+
+#price, #price-info {
+   font-size: 20px; 
 }
 
 #order-total-price {
@@ -98,7 +105,19 @@ header {
     visibility: hidden;
 } 
 
-.client-order-list {
+.single-product {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+}
+
+li {
+    list-style: none;
+    padding: 5px 0;
+}
+
+.remove-button {
+    cursor: pointer;
+    color: #BBBBBB;
+    border: none;
+    background: white;
 }

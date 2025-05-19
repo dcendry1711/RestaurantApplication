@@ -3,20 +3,50 @@ import {menuArray} from './data.js'
 const restaurantMenuEl = document.getElementById('restaurant-menu')
 const clientOrderEl = document.getElementById('client-order')
 const clientOrderListEl = document.getElementById('client-order-list')
+const priceEl = document.getElementById('price')
 
 const clientOrderArr = []
 
 restaurantMenuEl.addEventListener('click',function(e){
     if(e.target.dataset.pizza){
+        clientOrderEl.style.visibility = 'visible'
         handleOrder(e.target.dataset.pizza)
-        renderOrderList(clientOrderArr)
+    } else if (e.target.dataset.beer) {
+        handleOrder(e.target.dataset.beer)
+        clientOrderEl.style.visibility = 'visible'
+    } else if (e.target.dataset.hamburger){
+        handleOrder(e.target.dataset.hamburger)
+        clientOrderEl.style.visibility = 'visible'
     }
-    clientOrderEl.style.visibility = 'visible'
+    renderOrderList(clientOrderArr)
+    sumOfOrder(clientOrderArr)
 })
 
-function handleOrder(position){
+clientOrderListEl.addEventListener('click',function(e){
+    if(e.target.dataset.pizza){
+        removeFromOrderList(e.target.dataset.pizza)
+    } else if (e.target.dataset.beer){
+        removeFromOrderList(e.target.dataset.beer)
+    } else if (e.target.dataset.hamburger){
+         removeFromOrderList(e.target.dataset.hamburger)
+    }
+    renderOrderList(clientOrderArr)
+    sumOfOrder(clientOrderArr)
+})
+
+function removeFromOrderList(orderListPosition){
+    const indexToRemove = clientOrderArr.findIndex(function(order){
+        return order.id == orderListPosition
+    })
+
+    if(indexToRemove !== -1) {
+        clientOrderArr.splice(indexToRemove, 1)
+    }
+}
+
+function handleOrder(menuPosition){
     const selectedPosition = menuArray.filter(function(selPos){
-        return selPos.id==position
+        return selPos.id == menuPosition
     })[0]
     clientOrderArr.push(selectedPosition)
 }
@@ -25,22 +55,23 @@ function renderOrderList(arr){
     let html = ''
     arr.forEach(function(element){
         html += `
-        <p>${element.name}</p>
-        <button>remove</button>
-        <p>$${element.price}</p>
+        <section class="single-product">
+            <li>${element.name} <button class="remove-button" data-${element.name}="${element.id}">remove</button></li>
+            <div class="price-info" id="price-info">
+                <p>$${element.price}</p>
+            </div>
+        </section>
         `
     })
     clientOrderListEl.innerHTML = html
 }
 
-
-
-
-
-
-
-
-
+function sumOfOrder(arr){
+    const totalPrice = arr.reduce(function(total, nextElement){
+        return total + nextElement.price
+    },0)
+    priceEl.innerHTML = `$${totalPrice}`
+}
 
 function renderMenu(arr) {
     let html = ''
