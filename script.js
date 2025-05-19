@@ -38,6 +38,7 @@ clientOrderListEl.addEventListener('click',function(e){
 
 completeOrderBtn.addEventListener('click',function(){
     dataFormEl.style.visibility = 'visible'
+    completeOrderBtn.disabled = true
 })
 
 function removeFromOrderList(orderListPosition){
