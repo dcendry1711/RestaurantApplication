@@ -85,7 +85,7 @@ header {
     font-size: 28px;
 }
 
-#complete-order-button {
+#complete-order-button, #pay-button {
    width: 508px;
    height: 60px;
    margin: 50px auto;
@@ -118,4 +118,38 @@ li {
     color: #BBBBBB;
     border: none;
     background: white;
+}
+
+#data-form {
+    position: fixed;
+    top:70px;
+    left:0;
+    right:0;
+    left:0;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 524px;
+    height: 470px;
+    background: #8B8B8B;
+    border-radius: 5px;
+    visibility: hidden;
+}
+
+#client-data {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin: 10px auto;
+    width: 475px;
+    height: 71px;
+    font-size: 20px;
+}
+
+#whole-page {
+    position: relative;
 }

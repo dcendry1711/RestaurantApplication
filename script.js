@@ -4,6 +4,8 @@ const restaurantMenuEl = document.getElementById('restaurant-menu')
 const clientOrderEl = document.getElementById('client-order')
 const clientOrderListEl = document.getElementById('client-order-list')
 const priceEl = document.getElementById('price')
+const completeOrderBtn = document.getElementById('complete-order-button')
+const dataFormEl = document.getElementById('data-form')
 
 const clientOrderArr = []
 
@@ -32,6 +34,10 @@ clientOrderListEl.addEventListener('click',function(e){
     }
     renderOrderList(clientOrderArr)
     sumOfOrder(clientOrderArr)
+})
+
+completeOrderBtn.addEventListener('click',function(){
+    dataFormEl.style.visibility = 'visible'
 })
 
 function removeFromOrderList(orderListPosition){
