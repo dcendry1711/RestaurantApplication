@@ -102,7 +102,7 @@ function renderMenu(arr) {
                     <p class="position-price">$${menuPosition.price}</p>
                 </div>
                 <div class="order-button">
-                    <button class="order" data-${menuPosition.name}="${menuPosition.id}">+</button>
+                    <button class="menu-order-btn" data-${menuPosition.name}="${menuPosition.id}">+</button>
                 </div>
             </section>
         `

@@ -8,15 +8,24 @@
         <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header></header>
+        <header>
+                <!-- Tutaj leci gotowy nagłowek z importu z FIGMY-->
+        </header>
+
         <main id="whole-page">
+
             <div id="restaurant-menu">
+
                 <!--Tutaj leci render menu z tablicy 'menuArray'-->
+
             </div>
-            <div class="client-order hidden" id="client-order">
+
+            <div id="client-order">
                 <p id="order-header">Your order</p>
                 <div class="client-order-list" id="client-order-list">
+
                     <!--Tutaj leci render zamawianych pozycji-->
+
                 </div>
                 <div class="total-price">
                     <p id="order-total-price">Total price:</p><span id="price"></span>
@@ -25,16 +34,21 @@
                     <button id="complete-order-button">Complete order</button>
                 </div>
             </div>
+
+            <!--Formularz z danymi Klienta/płatności-->
+
             <div id="data-form">
                 <h2>Enter card details</h2>
                 <form id="client-data">
                     <input type="text" name="name" placeholder="Enter your name" minlength="2" pattern="[a-zA-Z ]+" required>
-                    <input type="text" placeholder="Enter card number" maxlength="20" pattern="[0-9 ]{20}" required>
-                    <input type="text" placeholder="Enter CVV" maxlength="3" pattern="[0-9]{3}" required>
+                    <input type="text" placeholder="Enter card number (16 digits)" maxlength="16" pattern="[0-9 ]{16}">
+                    <input type="text" placeholder="Enter CVV" maxlength="3" pattern="[0-9]{3}">
                     <button id="pay-button" type="submit">Pay</button>
                 </form>
             </div>
         </main>
+
         <script src="script.js" type="module"></script>
+
     </body>
 </html>
