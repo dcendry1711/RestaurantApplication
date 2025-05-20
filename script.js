@@ -49,19 +49,18 @@ clientDataForm.addEventListener('submit',function(e){
 })
 
 function removeFromOrderList(orderListPosition){
-    const indexToRemove = clientOrderArr.findIndex(function(order){
-        return order.id == orderListPosition
-    })
+    const indexToRemove = clientOrderArr.findIndex((order) => order.id == orderListPosition)
 
     if(indexToRemove !== -1) {
         clientOrderArr.splice(indexToRemove, 1)
     }
+
+    (clientOrderArr.length === 0) ?  clientOrderEl.style.visibility = 'hidden' : ''
+       
 }
 
 function handleOrder(menuPosition){
-    const selectedPosition = menuArray.filter(function(selPos){
-        return selPos.id == menuPosition
-    })[0]
+    const selectedPosition = menuArray.filter((selPos) =>selPos.id == menuPosition)[0]
     clientOrderArr.push(selectedPosition)
     clientOrderEl.style.visibility = 'visible'
 }
@@ -82,9 +81,7 @@ function renderOrderList(arr){
 }
 
 function sumOfOrder(arr){
-    const totalPrice = arr.reduce(function(total, nextElement){
-        return total + nextElement.price
-    },0)
+    const totalPrice = arr.reduce((total, nextElement) => total + nextElement.price,0)
     priceEl.innerHTML = `$${totalPrice}`
 }
 
