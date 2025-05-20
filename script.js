@@ -6,6 +6,7 @@ const clientOrderListEl = document.getElementById('client-order-list')
 const priceEl = document.getElementById('price')
 const completeOrderBtn = document.getElementById('complete-order-button')
 const dataFormEl = document.getElementById('data-form')
+const clientDataForm = document.getElementById('client-data')
 
 const clientOrderArr = []
 
@@ -39,6 +40,16 @@ clientOrderListEl.addEventListener('click',function(e){
 completeOrderBtn.addEventListener('click',function(){
     dataFormEl.style.visibility = 'visible'
     completeOrderBtn.disabled = true
+})
+
+clientDataForm.addEventListener('submit',function(e){
+    e.preventDefault()
+    const dataFromForm = new FormData(clientDataForm)
+    const name = dataFromForm.get('name')
+    dataFormEl.style.visibility = 'hidden'
+    clientOrderEl.innerHTML = `
+    <p id="thanks-for-order">Thanks ${name} for your order!</p>
+    `
 })
 
 function removeFromOrderList(orderListPosition){
