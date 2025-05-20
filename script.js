@@ -11,15 +11,12 @@ const clientDataForm = document.getElementById('client-data')
 const clientOrderArr = []
 
 restaurantMenuEl.addEventListener('click',function(e){
-    if(e.target.dataset.pizza){
-        clientOrderEl.style.visibility = 'visible'
+    if(e.target.dataset.pizza) {
         handleOrder(e.target.dataset.pizza)
     } else if (e.target.dataset.beer) {
         handleOrder(e.target.dataset.beer)
-        clientOrderEl.style.visibility = 'visible'
     } else if (e.target.dataset.hamburger){
         handleOrder(e.target.dataset.hamburger)
-        clientOrderEl.style.visibility = 'visible'
     }
     renderOrderList(clientOrderArr)
     sumOfOrder(clientOrderArr)
@@ -39,7 +36,6 @@ clientOrderListEl.addEventListener('click',function(e){
 
 completeOrderBtn.addEventListener('click',function(){
     dataFormEl.style.visibility = 'visible'
-    completeOrderBtn.disabled = true
 })
 
 clientDataForm.addEventListener('submit',function(e){
@@ -67,6 +63,7 @@ function handleOrder(menuPosition){
         return selPos.id == menuPosition
     })[0]
     clientOrderArr.push(selectedPosition)
+    clientOrderEl.style.visibility = 'visible'
 }
 
 function renderOrderList(arr){
