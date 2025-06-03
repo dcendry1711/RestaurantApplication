@@ -58,6 +58,7 @@ header {
 
 .position-name {
     font-size: 28px;
+    color: green; /* Change color of menu positions for issue #1*/
 }
 
 .position-ingredients {
